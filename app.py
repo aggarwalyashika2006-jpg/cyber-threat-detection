@@ -3,7 +3,11 @@ import numpy as np
 import joblib
 
 # Load trained model
-model = joblib.load("cybersecurity_model.pkl")
+import gzip
+
+
+with gzip.open("cybersecurity_model.pkl.gz", "rb") as f:
+    model = joblib.load(f)
 
 # Initialize Flask app
 app = Flask(__name__)
